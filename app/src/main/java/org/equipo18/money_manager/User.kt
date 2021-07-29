@@ -3,7 +3,7 @@ package org.equipo18.money_manager
 class User(
     private var email: String,
     private var password: String,
-    private var username: String) {
+    private var username: String = "Usuario") {
 
     val accountLists = mutableListOf<Account>()
     var validSes: Boolean = false
