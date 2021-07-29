@@ -2,6 +2,9 @@
     <string name="app_name">Money-Manager</string>
     <string name="texto_registro">Registrarse</string>
     <string name="texto_iniciarses">Iniciar Sesión</string>
-    <string name="texto_registrese">Registrese para guardar su información</string>
+    <string name="texto_inicie_sesion">Inicia sesión en Money Manager</string>
     <string name="texto_sin_cuenta">Continuar sin crear una cuenta</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Iniciar Sesión</string>
 </resources>
