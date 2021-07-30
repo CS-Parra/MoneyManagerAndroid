@@ -6,12 +6,6 @@ import android.widget.Button
 import android.widget.EditText
 import com.google.android.material.snackbar.Snackbar
 
-
-class RegisterActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
-
         val txtEmail       = findViewById<EditText>(R.id.editTextTextEmailAddress)
         val txtPassword1   = findViewById<EditText>(R.id.editTextTextPassword)
         val txtPassword2   = findViewById<EditText>(R.id.editTextTextPassword2)
@@ -53,7 +47,6 @@ class RegisterActivity : AppCompatActivity() {
                         ).show()
                     }
 
-
                 }
 
                 else {
@@ -69,4 +62,5 @@ class RegisterActivity : AppCompatActivity() {
         }
 
     }
+
 }

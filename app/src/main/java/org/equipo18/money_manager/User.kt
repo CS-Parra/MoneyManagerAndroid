@@ -5,6 +5,7 @@ class User(
     private var password: String,
     private var username: String = "Desconocido") {
 
+
     fun getUserName() : String{
         return username
     }
