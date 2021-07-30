@@ -4,16 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 
 const val USER_NAME = "org.equipo18.money_manager.USER_NAME"
 
 class LoginActivity : AppCompatActivity() {
-
-    fun isEmailValid(email: String): Boolean {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,36 +34,44 @@ class LoginActivity : AppCompatActivity() {
 
        btnLogin.setOnClickListener{
 
-           when {
-               txtEmail.editText?.text.toString().isEmpty() -> {
-                   Snackbar.make(
-                       findViewById(R.id.main),
-                       "Ingresa el correo porfavor",
-                       Snackbar.LENGTH_INDEFINITE
-                   ).show()
-               }
-               txtPassword.editText?.text.toString().isEmpty() -> {
-                   Snackbar.make(
-                       findViewById(R.id.main),
-                       "Ingresa la contraseña por favor",
-                       Snackbar.LENGTH_INDEFINITE
-                   ).show()
-               }
-               else -> {
-                   val validacion = isEmailValid(txtEmail.editText?.text.toString())
+           if (txtEmail.editText?.text.toString().isEmpty() ||
+               txtPassword.editText?.text.toString().isEmpty() ) {
 
-                   if(validacion){
-                       
+               Toast.makeText(this, "Debes de llenar todos los campos obligatorios", Toast.LENGTH_LONG).show()
+           }
+
+           else {
+
+               val moneymanager = MoneyManager()
+
+               val validacion = moneymanager.isEmailValid(txtEmail.editText?.text.toString())
+
+               if(validacion){
+
+                   val moneyManager = MoneyManager()
+
+                   moneyManager.usersList.forEach {
+
+                       if(txtEmail.editText?.text.toString() == it.getEmail() &&
+                           txtPassword.editText?.text.toString() == it.getPassword() ){
+
+                           Toast.makeText(this, "Bienvenido ${it.getUserName()}", Toast.LENGTH_LONG).show()
+
+                       }
+
+                       else {
+                           Toast.makeText(this, "El usuario no esta registrado en nuestra base de datos", Toast.LENGTH_LONG).show()
+                       }
+
                    }
 
-                   else {
-                       Snackbar.make(
-                           findViewById(R.id.main),
-                           "Por Favor Ingresa un correo valido",
-                           Snackbar.LENGTH_INDEFINITE
-                       ).show()
-                   }
                }
+
+               else {
+                   Toast.makeText(this, "Porfavor ingresa un correo valido", Toast.LENGTH_LONG).show()
+
+               }
+
            }
 
        }
