@@ -3,12 +3,12 @@ package org.equipo18.money_manager
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
-import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 
-const val USER_NAME = "org.equipo18.money_manager.USER_NAME"
+const val USER_MSG = "org.equipo18.money_manager.USER_MSG"
 
 class LoginActivity : AppCompatActivity() {
 
@@ -20,61 +20,86 @@ class LoginActivity : AppCompatActivity() {
         val txtPassword  = findViewById<TextInputLayout>(R.id.txtPassword)
         val btnSinCuenta = findViewById<Button>(R.id.btnSinCuenta)
         val btnLogin     = findViewById<Button>(R.id.btnLogin)
+        val bundle = Bundle()
 
         btnSinCuenta.setOnClickListener {
-
-            val bundle = Bundle()
-            bundle.putString(USER_NAME, "Bienvenido Usuario")
-            
-            val intent = Intent(this, MainActivity::class.java).apply {
-                putExtras(bundle)
-            }
-            startActivity(intent)
+            bundle.putString(USER_MSG, "Bienvenido Usuario")
+            beginIntent(bundle)
         }
 
-       btnLogin.setOnClickListener{
+        btnLogin.setOnClickListener{
 
-           if (txtEmail.editText?.text.toString().isEmpty() ||
-               txtPassword.editText?.text.toString().isEmpty() ) {
+            val inputEmail = txtEmail.editText?.text.toString()
+            val inputPassword = txtPassword.editText?.text.toString()
+            val validacion = MoneyManager.isEmailValid(inputEmail)
 
-               Toast.makeText(this, "Debes de llenar todos los campos obligatorios", Toast.LENGTH_LONG).show()
-           }
+            when {
 
-           else {
+                inputEmail.isEmpty() || inputPassword.isEmpty() -> {
+                    sendSnackBar(it, "Debes de llenar todos los campos obligatorios")
+                }
 
-               val moneymanager = MoneyManager()
+                validacion -> {
 
-               val validacion = moneymanager.isEmailValid(txtEmail.editText?.text.toString())
+                    val user = findUser(inputEmail, inputPassword)
 
-               if(validacion){
+                    if (user != "Unknown"){
+                        bundle.putString(USER_MSG, "Bienvenido $user")
+                        beginIntent(bundle)
+                    }
 
-                   val moneyManager = MoneyManager()
+                    else {
+                        sendSnackBar(it, "El usuario no se encuentra registro registrado en nuestra base datos")
+                    }
 
-                   moneyManager.usersList.forEach {
+                }
 
-                       if(txtEmail.editText?.text.toString() == it.getEmail() &&
-                           txtPassword.editText?.text.toString() == it.getPassword() ){
+                else -> {
+                    sendSnackBar(it, "Porvafor Ingresa un correo valido")
+                }
+            }
 
-                           Toast.makeText(this, "Bienvenido ${it.getUserName()}", Toast.LENGTH_LONG).show()
-
-                       }
-
-                       else {
-                           Toast.makeText(this, "El usuario no esta registrado en nuestra base de datos", Toast.LENGTH_LONG).show()
-                       }
-
-                   }
-
-               }
-
-               else {
-                   Toast.makeText(this, "Porfavor ingresa un correo valido", Toast.LENGTH_LONG).show()
-
-               }
-
-           }
-
-       }
+        }
 
     }
+
+    private fun findUser(email: String, password: String): String {
+
+        val moneymanager = MoneyManager()
+        var userName = ""
+
+        for (user in moneymanager.usersList){
+
+            if (email == user.getEmail() && password == user.getPassword()){
+                userName = user.getUserName()
+                break
+            }
+
+            else {
+                userName = "Unknown"
+            }
+        }
+
+        return userName
+
+    }
+
+    private fun beginIntent(bundle: Bundle){
+
+        val intent = Intent(this, MainActivity::class.java).apply {
+            putExtras(bundle)
+        }
+
+        startActivity(intent)
+
+    }
+
+    private fun sendSnackBar(view: View, msj: String){
+        Snackbar.make(
+            view,
+            msj,
+            Snackbar.LENGTH_SHORT
+        ).show()
+    }
+
 }

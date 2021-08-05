@@ -10,9 +10,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val twUser = findViewById<TextView>(R.id.user)
-
-        val user = intent.extras?.getString(USER_NAME)
-
+        val user = intent.extras?.getString(USER_MSG)
         twUser.text = user
 
     }
