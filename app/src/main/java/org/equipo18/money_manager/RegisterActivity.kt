@@ -35,7 +35,7 @@ class RegisterActivity : AppCompatActivity() {
 
                 if (txtPassword1.text.toString() == txtPassword2.text.toString()) {
 
-                    if (moneymaner.isEmailValid(txtEmail.text.toString())) {
+                    if (MoneyManager.isEmailValid(txtEmail.text.toString())) {
                         val usuario = User(txtEmail.toString(), txtPassword1.toString())
                         moneymaner.usersList.add(usuario)
                         Snackbar.make(
