@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/frAccount"
+        android:title="@string/txtFrCuentas"
+        android:icon="@drawable/ic_account"/>
+    <item
+        android:id="@+id/frMovement"
+        android:title="@string/txtFrMovimientos"
+        android:icon="@drawable/ic_movements"/>
+    <item
+        android:id="@+id/frCategory"
+        android:title="@string/txtFrCategorias"
+        android:icon="@drawable/ic_category"/>
+</menu>

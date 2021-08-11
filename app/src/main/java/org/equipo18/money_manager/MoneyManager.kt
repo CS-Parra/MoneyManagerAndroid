@@ -1,5 +1,8 @@
 package org.equipo18.money_manager
 
+import android.view.View
+import com.google.android.material.snackbar.Snackbar
+
 class MoneyManager {
 
     val usersList = mutableListOf(
@@ -12,9 +15,19 @@ class MoneyManager {
     )
 
     companion object {
+
         fun isEmailValid(email: String): Boolean {
             return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
         }
+
+        fun sendSnackBar(view: View, msj: String){
+            Snackbar.make(
+                view,
+                msj,
+                Snackbar.LENGTH_SHORT
+            ).show()
+        }
+
     }
 
 }

@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import com.google.android.material.snackbar.Snackbar
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -16,52 +15,38 @@ class RegisterActivity : AppCompatActivity() {
         val txtPassword1 = findViewById<EditText>(R.id.editTextTextPassword)
         val txtPassword2 = findViewById<EditText>(R.id.editTextTextPassword2)
         val btnRegistrarse = findViewById<Button>(R.id.buttonRegistrar)
-
+        val inputEmail = txtEmail.text.toString()
+        val inputPassword1 = txtPassword1.text.toString()
+        val inputPassword2 = txtPassword2.text.toString()
         val moneymaner = MoneyManager()
 
         btnRegistrarse.setOnClickListener {
 
-            if (txtEmail.text.toString().isEmpty() ||
-                txtPassword1.text.toString().isEmpty() ||
-                txtPassword2.text.toString().isEmpty() ) {
-                Snackbar.make(
-                    it,
-                    "Debes de llenar todos los campos obligatorios",
-                    Snackbar.LENGTH_INDEFINITE
-                ).show()
+            if (inputEmail.isEmpty() || inputPassword1.isEmpty() || inputPassword2.isEmpty()){
+                MoneyManager.sendSnackBar(it,"Debes de llenar todos los campos obligatorios")
             }
 
             else {
+                if (inputPassword1 == inputPassword2){
 
-                if (txtPassword1.text.toString() == txtPassword2.text.toString()) {
+                    if (MoneyManager.isEmailValid(inputEmail)){
 
-                    if (MoneyManager.isEmailValid(txtEmail.text.toString())) {
-                        val usuario = User(txtEmail.toString(), txtPassword1.toString())
+                        val usuario = User(inputEmail, inputPassword1)
                         moneymaner.usersList.add(usuario)
-                        Snackbar.make(
-                            it,
-                            "El usuario ha sido agregado",
-                            Snackbar.LENGTH_INDEFINITE
-                        ).show()
-                    } else {
-                        Snackbar.make(
-                            it,
-                            "Debes de ingresar un correo valido",
-                            Snackbar.LENGTH_INDEFINITE
-                        ).show()
+                        MoneyManager.sendSnackBar(it,"El usuario ha sido agregado")
+
                     }
 
-                } else {
-                    Snackbar.make(
-                        it,
-                        "Las contraseñas no coinciden",
-                        Snackbar.LENGTH_INDEFINITE
-                    ).show()
+                    else  {
+                        MoneyManager.sendSnackBar(it,"Debes de ingresar un correo valido")
+                    }
+
                 }
 
+                else {
+                    MoneyManager.sendSnackBar(it,"Las contraseñas no coinciden")
+                }
             }
-
         }
     }
-
 }
