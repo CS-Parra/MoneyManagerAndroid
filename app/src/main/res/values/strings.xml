@@ -14,4 +14,7 @@
     <string name="textRepita">Repita su contraseña</string>
     <string name="descriptionImg">Login de la Aplicacion</string>
     <string name="msjLogin">Inicia sesion en Money Manager</string>
+    <string name="txtFrCuentas">Cuentas</string>
+    <string name="txtFrMovimientos">Movimientos</string>
+    <string name="txtFrCategorias">Categorias</string>
 </resources>
