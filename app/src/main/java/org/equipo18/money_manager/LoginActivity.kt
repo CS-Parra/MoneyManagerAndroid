@@ -3,9 +3,7 @@ package org.equipo18.money_manager
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 
 const val USER_MSG = "org.equipo18.money_manager.USER_MSG"
@@ -36,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
             when {
 
                 inputEmail.isEmpty() || inputPassword.isEmpty() -> {
-                    sendSnackBar(it, "Debes de llenar todos los campos obligatorios")
+                    MoneyManager.sendSnackBar(it, "Debes de llenar todos los campos obligatorios")
                 }
 
                 validacion -> {
@@ -49,13 +47,13 @@ class LoginActivity : AppCompatActivity() {
                     }
 
                     else {
-                        sendSnackBar(it, "El usuario no se encuentra registro registrado en nuestra base datos")
+                        MoneyManager.sendSnackBar(it, "El usuario no se encuentra registro registrado en nuestra base datos")
                     }
 
                 }
 
                 else -> {
-                    sendSnackBar(it, "Porvafor Ingresa un correo valido")
+                    MoneyManager.sendSnackBar(it, "Porvafor Ingresa un correo valido")
                 }
             }
 
@@ -92,14 +90,6 @@ class LoginActivity : AppCompatActivity() {
 
         startActivity(intent)
 
-    }
-
-    private fun sendSnackBar(view: View, msj: String){
-        Snackbar.make(
-            view,
-            msj,
-            Snackbar.LENGTH_SHORT
-        ).show()
     }
 
 }

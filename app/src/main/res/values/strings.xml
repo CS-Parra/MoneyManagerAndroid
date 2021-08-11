@@ -7,10 +7,11 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Iniciar Sesión</string>
-    <string name="twUser">Usuario</string>
     <string name="instruccionEmail">Ingrese su dirección de correo electrónico</string>
     <string name="instruccionContraseña">Ingrese una contraseña</string>
     <string name="textContraseña">Contraseña</string>
     <string name="textSiguiente">Siguiente</string>
     <string name="textRepita">Repita su contraseña</string>
+    <string name="descriptionImg">Login de la Aplicacion</string>
+    <string name="msjLogin">Inicia sesion en Money Manager</string>
 </resources>
