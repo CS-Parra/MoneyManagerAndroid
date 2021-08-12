@@ -1,4 +1,4 @@
-package org.equipo18.money_manager
+package org.equipo18.money_manager.controller
 
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
@@ -14,6 +14,10 @@ class MoneyManager {
         User("dev@gmail.com","dev","Developer"),
     )
 
+    val incomeCategories = mutableListOf("Regalo","Interes","Salario","Otros")
+    val expenseCategories = mutableListOf("Transporte","Alimentacion","Rutina",
+    "Familia","Regalos","Educación","Cafe","Casa","Ocio","Salud","Otros")
+
     companion object {
 
         fun isEmailValid(email: String): Boolean {
@@ -21,11 +25,7 @@ class MoneyManager {
         }
 
         fun sendSnackBar(view: View, msj: String){
-            Snackbar.make(
-                view,
-                msj,
-                Snackbar.LENGTH_SHORT
-            ).show()
+            Snackbar.make(view, msj, Snackbar.LENGTH_SHORT).show()
         }
 
     }

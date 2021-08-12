@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import org.equipo18.money_manager.fragments.AcountFragment
+import org.equipo18.money_manager.fragments.CategoryFragment
+import org.equipo18.money_manager.fragments.MovementFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
