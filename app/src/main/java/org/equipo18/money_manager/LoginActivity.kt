@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.google.android.material.textfield.TextInputLayout
+import org.equipo18.money_manager.controller.MoneyManager
 
 const val USER_MSG = "org.equipo18.money_manager.USER_MSG"
 

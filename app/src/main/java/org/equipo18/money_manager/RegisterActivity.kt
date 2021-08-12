@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import org.equipo18.money_manager.controller.MoneyManager
+import org.equipo18.money_manager.controller.User
 
 class RegisterActivity : AppCompatActivity() {
 
