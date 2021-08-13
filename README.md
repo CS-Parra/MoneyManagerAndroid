@@ -9,3 +9,13 @@ El proyecto pretende solucionar la problemática que existe al hacer un **seguim
 <br>
 <br>
 Por lo que sería muy útil una aplicación sencilla y fácil de usar para realizar el seguimiento de nuestros gastos e ingresos, agruparlos por categoría y visualizar los porcentajes de cada categoría para hacer un plan a futuro y planear bien nuestros presupuestos para tener una buena salud financiera.
+
+## Usuarios para entrar
+
+# User                    
+1.- dev@gmail.com <br>
+2.- u@gmail.com <br>
+<br>
+# Password
+1.- u <br>
+2.- dev <br>
