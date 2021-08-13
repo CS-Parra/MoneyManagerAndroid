@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import org.equipo18.money_manager.R
 import org.equipo18.money_manager.adapters.CustomAdapterCategories
 import org.equipo18.money_manager.models.CategoriesViewModel
+import org.equipo18.money_manager.models.MovementsViewModel
 
 class CategoryFragment : Fragment() {
 
@@ -26,13 +27,21 @@ class CategoryFragment : Fragment() {
         // this creates a vertical layout Manager
         recyclerview.layoutManager = LinearLayoutManager(requireContext())
 
-        // ArrayList of class ItemsViewModel
-        val incomes = ArrayList<CategoriesViewModel>()
-
-        incomes.add(CategoriesViewModel(R.drawable.ic_category, "Texto"))
+        val categories = listOf(
+            CategoriesViewModel(R.drawable.ic_category, "Transporte"),
+            CategoriesViewModel(R.drawable.ic_category, "Alimentacion"),
+            CategoriesViewModel(R.drawable.ic_category, "Rutina"),
+            CategoriesViewModel(R.drawable.ic_category, "Familia"),
+            CategoriesViewModel(R.drawable.ic_category, "Regalos"),
+            CategoriesViewModel(R.drawable.ic_category, "Interes"),
+            CategoriesViewModel(R.drawable.ic_category, "Salario"),
+            CategoriesViewModel(R.drawable.ic_category, "Casa"),
+            CategoriesViewModel(R.drawable.ic_category, "Educacion"),
+            CategoriesViewModel(R.drawable.ic_category, "Salud"),
+        )
 
         // This will pass the ArrayList to our Adapter
-        val adapter = CustomAdapterCategories(incomes)
+        val adapter = CustomAdapterCategories(categories)
 
         // Setting the Adapter with the recyclerview
         recyclerview.adapter = adapter
