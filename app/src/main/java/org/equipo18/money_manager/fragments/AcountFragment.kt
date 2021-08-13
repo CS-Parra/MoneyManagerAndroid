@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import org.equipo18.money_manager.R
 import org.equipo18.money_manager.adapters.CustomAdapterAccounts
 import org.equipo18.money_manager.models.AccountsViewModel
+import org.equipo18.money_manager.models.CategoriesViewModel
 
 
 class AcountFragment : Fragment() {
@@ -27,10 +28,10 @@ class AcountFragment : Fragment() {
         // this creates a vertical layout Manager
         recyclerview.layoutManager = LinearLayoutManager(requireContext())
 
-        // ArrayList of class ItemsViewModel
-        val accounts = ArrayList<AccountsViewModel>()
-
-        accounts.add(AccountsViewModel("Principal",10f,"Mx", R.drawable.ic_account))
+        val accounts = listOf(
+            AccountsViewModel("Principal",5000f,"Mx", R.drawable.ic_account),
+            AccountsViewModel("Secundario",1000f,"Mx", R.drawable.ic_account)
+        )
 
         val adapter = CustomAdapterAccounts(accounts, requireContext())
 
